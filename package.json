@@ -12,23 +12,25 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
-    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "axios": "^1.9.0",
     "expo": "^55.0.23",
     "expo-av": "~15.1.7",
+    "expo-dev-client": "~55.0.32",
     "expo-router": "~55.0.14",
-    "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-native": "0.79.6",
-    "react-native-safe-area-context": "5.4.0",
-    "react-native-screens": "~4.11.1",
-    "react-native-web": "^0.20.0"
+    "expo-status-bar": "~55.0.6",
+    "expo-updates": "~55.0.21",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.6",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-web": "^0.21.0"
   },
   "devDependencies": {
-    "@types/react": "~19.0.10",
+    "@types/react": "~19.2.10",
     "eslint": "^9.39.4",
-    "eslint-config-expo": "~9.2.0",
-    "typescript": "~5.8.3"
+    "eslint-config-expo": "~55.0.0",
+    "typescript": "~5.9.2"
   }
 }

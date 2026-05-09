@@ -14,12 +14,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hong0420.dreamthread",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#080C0F"
-      }
+      },
+      "package": "com.hong0420.dreamthread"
     },
     "web": {
       "bundler": "metro"
@@ -30,6 +35,19 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "ceabc2c8-1be9-49cf-9cac-e22f3cf88867"
+      }
+    },
+    "owner": "hong0420",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ceabc2c8-1be9-49cf-9cac-e22f3cf88867"
     }
   }
 }
