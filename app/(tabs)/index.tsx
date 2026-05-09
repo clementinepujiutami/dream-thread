@@ -45,13 +45,13 @@ export default function RecordScreen() {
       Animated.sequence([
         Animated.timing(pulse, {
           toValue: 1,
-          duration: 900,
+          duration: 1200,
           easing: Easing.out(Easing.ease),
           useNativeDriver: true,
         }),
         Animated.timing(pulse, {
           toValue: 0,
-          duration: 900,
+          duration: 1200,
           easing: Easing.in(Easing.ease),
           useNativeDriver: true,
         }),
@@ -195,13 +195,13 @@ export default function RecordScreen() {
               {
                 opacity: pulse.interpolate({
                   inputRange: [0, 1],
-                  outputRange: [0.22, 0.72],
+                  outputRange: [0.12, 0.36],
                 }),
                 transform: [
                   {
                     scale: pulse.interpolate({
                       inputRange: [0, 1],
-                      outputRange: [1, 1.25],
+                      outputRange: [1, 1.14],
                     }),
                   },
                 ],
@@ -320,9 +320,9 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 24,
     borderRadius: 14,
-    backgroundColor: "#10161B",
+    backgroundColor: Colors.card,
     borderWidth: 1,
-    borderColor: "#202A32",
+    borderColor: Colors.border,
     padding: 14,
   },
   transcriptInput: {

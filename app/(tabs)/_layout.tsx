@@ -11,10 +11,10 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: Colors.background },
         tabBarStyle: {
           backgroundColor: Colors.background,
-          borderTopColor: Colors.muted,
+          borderTopColor: Colors.border,
         },
         tabBarActiveTintColor: Colors.accent,
-        tabBarInactiveTintColor: Colors.text,
+        tabBarInactiveTintColor: Colors.mutedText,
       }}
     >
       <Tabs.Screen

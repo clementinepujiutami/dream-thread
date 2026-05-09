@@ -108,9 +108,9 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   card: {
-    backgroundColor: "#10161B",
+    backgroundColor: Colors.card,
     borderWidth: 1,
-    borderColor: "#1C252D",
+    borderColor: Colors.border,
     borderRadius: 14,
     padding: 14,
     gap: 10,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   chip: {
-    backgroundColor: "#1F2A33",
+    backgroundColor: Colors.border,
     borderRadius: 999,
     paddingVertical: 6,
     paddingHorizontal: 10,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.accent,
   },
   chipText: {
-    color: Colors.text,
+    color: Colors.mutedText,
     fontSize: 12,
     fontWeight: "600",
   },
