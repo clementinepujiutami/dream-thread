@@ -1,4 +1,3 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { DreamTags } from "@/src/types/dream";
 
 const SYSTEM_PROMPT =
@@ -22,9 +21,10 @@ function extractJson(text: string): string {
 
 export async function POST(request: Request) {
   try {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.OPENROUTER_API_KEY;
+    const model = process.env.OPENROUTER_MODEL ?? "poolside/laguna-xs.2:free";
     if (!apiKey) {
-      return Response.json({ error: "Missing ANTHROPIC_API_KEY" }, { status: 500 });
+      return Response.json({ error: "Missing OPENROUTER_API_KEY" }, { status: 500 });
     }
 
     const body = (await request.json()) as { transcript?: string };
@@ -32,19 +32,39 @@ export async function POST(request: Request) {
       return Response.json({ error: "Missing transcript" }, { status: 400 });
     }
 
-    const anthropic = new Anthropic({ apiKey });
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 400,
-      system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: body.transcript }],
-    });
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: body.transcript },
+          ],
+          temperature: 0,
+          max_tokens: 400,
+        }),
+      }
+    );
 
-    const text = response.content
-      .filter((chunk) => chunk.type === "text")
-      .map((chunk) => chunk.text)
-      .join("\n")
-      .trim();
+    if (!response.ok) {
+      const details = await response.text();
+      return Response.json({ error: "Tag extraction failed", details }, { status: 502 });
+    }
+
+    const data = (await response.json()) as {
+      choices?: {
+        message?: {
+          content?: string;
+        };
+      }[];
+    };
+    const text = data.choices?.[0]?.message?.content?.trim() ?? "";
 
     const parsed = JSON.parse(extractJson(text)) as Partial<DreamTags>;
     return Response.json({ tags: normalizeTags(parsed) });
