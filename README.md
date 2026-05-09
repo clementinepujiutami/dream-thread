@@ -1,377 +1,303 @@
-# WooCommerce PDF Voucher Manager - Text Stamping Edition
-
-## Version 10.0 - Complete Refactor
-
-This is a **completely refactored version** of your WordPress/WooCommerce PDF voucher plugin. The major change is that it now uses **static text stamping** to overlay voucher information directly onto PDFs, instead of filling form fields.
-
----
-
-## 🎯 What Changed?
-
-### Old Method (v9.0)
-- Required PDF templates with **fillable form fields**
-- Used FPDM library to fill fields by name
-- Limited to PDF version 1.4
-- Field names had to match exactly
-
-### New Method (v10.0)
-- Works with **any PDF template** (no form fields needed!)
-- Uses Python with `pypdf` and `reportlab` to stamp text
-- Works with any PDF version
-- Flexible positioning with presets or custom coordinates
-
----
-
-## 🔧 Server Requirements
-
-### Required
-1. **Python 3** installed on server
-2. **Python packages:**
-   ```bash
-   pip3 install pypdf reportlab
-   ```
-
-### Verification
-The plugin will check for Python availability in the admin area and show warnings if not found.
-
----
-
-## 📦 Installation
-
-1. **Remove old plugin files** (backup first!)
-   - Remove `fpdm/` folder (no longer needed)
-   - Remove old plugin file
-
-2. **Upload new plugin:**
-   - Upload `woo-pdf-voucher-stamped.php` to `/wp-content/plugins/`
-
-3. **Activate the plugin** in WordPress admin
-
-4. **Verify system requirements** in Settings page
-
----
-
-## 🎨 Product Configuration
-
-When editing a WooCommerce product, you'll now see these fields:
-
-### 1. PDF Template URL
-- Upload any PDF to Media Library
-- Copy the file URL and paste here
-- **No form fields required!** Any PDF works
-
-### 2. Target Page Number
-- Which page to stamp the text on (default: 1)
-- Useful for multi-page PDFs
-
-### 3. Position Preset
-Choose from:
-- **Top-Left** - Safe margin from top-left corner
-- **Top-Right** - Safe margin from top-right corner
-- **Bottom-Left** - Safe margin from bottom-left corner
-- **Bottom-Right** - Safe margin from bottom-right corner
-- **Center** - Centered on page
-
-All presets include a 10mm safety margin from page edges.
-
-### 4. Custom Position (Optional)
-Override the preset with exact coordinates:
-
-**Percentage format:**
-```
-90% 90%    (90% from left, 90% from top)
-10% 10%    (10% from left, 10% from top)
-```
-
-**Millimeter format:**
-```
-20mm 30mm  (20mm from left, 30mm from top)
-10mm 280mm (10mm from left, 280mm from top)
-```
-
-**Mixed format:**
-```
-50% 20mm   (50% from left, 20mm from top)
-```
-
-### 5. Font Size
-- Size in points (default: 12pt)
-- Range: 6-72pt
-
----
-
-## 📝 How Text is Positioned
-
-### Text Block Behavior
-The plugin treats customer name and voucher code as a **single grouped text block**:
+<div align="center">
 
 ```
-John Smith          ← Customer name (top)
-V-123-ABCD         ← Voucher code (bottom)
+        ✦         ·    ✧
+   ·         ✦         ·
+       ⋆          ·  
+  ✧        ☾          ✦
+              ·
+       ✦      ⋆     ·
 ```
 
-### Key Features:
-1. **Left-aligned internally** - Text lines align to the left within the block
-2. **Tight spacing** - Minimal gap between lines (no extra padding)
-3. **Smart anchoring** - The position you specify becomes the anchor point
+# 🌙 Dream Thread
 
-### Anchor Point Logic
+***voice-first dream capture***
 
-The position you specify (either preset or custom) determines where the text block is **anchored**:
-
-| Preset/Anchor | Text Block Position |
-|---------------|---------------------|
-| Top-Left | Top-left corner of block at coordinates |
-| Top-Right | Top-right corner of block at coordinates |
-| Bottom-Left | Bottom-left corner of block at coordinates |
-| Bottom-Right | Bottom-right corner of block at coordinates |
-| Center | Center of block at coordinates |
-
-**This ensures text never falls off the page** regardless of which corner you use!
+*The AI listens. Reflects your mood. Never tells you what it means.*
 
 ---
 
-## 🔍 Examples
+[![Built at](https://img.shields.io/badge/built_at-Cursor_Hackathon_2026-1A1438?style=for-the-badge&labelColor=2C2358)](https://github.com/clementinepujiutami/dream-thread)
+[![Built in](https://img.shields.io/badge/built_in-2.5_hours-F2D472?style=for-the-badge&labelColor=2C2358)](https://github.com/clementinepujiutami/dream-thread)
+[![Status](https://img.shields.io/badge/status-dreaming-F4B8D9?style=for-the-badge&labelColor=2C2358)](https://github.com/clementinepujiutami/dream-thread)
 
-### Example 1: Receipt-style voucher
-**Template:** Blank PDF
-**Settings:**
-- Position: `Top-Left`
-- Font Size: `14`
-
-**Result:** Text appears in top-left with safe margin
+</div>
 
 ---
 
-### Example 2: Certificate with signature area
-**Template:** Certificate PDF with signature line at bottom
-**Settings:**
-- Position: `Bottom-Right`
-- Custom Position: `180mm 20mm`
-- Font Size: `10`
+## ✦ It's 3am.
 
-**Result:** Text block's bottom-right corner aligns to 180mm from left, 20mm from top
+You just had the most vivid dream of your life.
 
----
+You reach for your phone -
 
-### Example 3: Centered voucher code
-**Template:** Gift card design
-**Settings:**
-- Position: `Center`
-- Font Size: `16`
+and by the time it unlocks,
 
-**Result:** Text block centered on page
+***it's already gone.***
 
 ---
 
-## 🧪 Testing
+## ☾ What Dream Thread is
 
-### Use the Test Generator
-1. Go to **Vouchers → Settings**
-2. Select a product with PDF template configured
-3. Click **Run Test Generation**
-4. Check the debug log for detailed output
-5. Download and verify the generated PDF
+A dream journal that meets you at the moment you actually need it - **half-asleep, eyes closed, 3am**.
 
-### Debug Log
-All operations are logged to:
+One tap on the lock screen. Whisper into the dark. Go back to sleep.
+
+The AI doesn't interpret. It doesn't analyse. It doesn't tell you what your dream "means."
+
+It just **listens, reflects your mood, and files it away** - so when you wake up properly, your dream is still there. And six months from now, the patterns surface on their own.
+
+---
+
+## ✧ The problem every app ignores
+
+| | |
+|:---:|:---|
+| **`90s`** | Dream memory half-life. Without rehearsal, most content is inaccessible within 90 seconds of waking. *(Stickgold et al.)* |
+| **`4-6`** | Taps to open any other app. Wake -> unlock -> find -> open -> navigate -> record. The dream is gone before you start. |
+| **`30m`** | Blue-light sleep delay. Screen exposure at 3am suppresses melatonin and pushes sleep re-onset by up to 30 minutes. |
+
+---
+
+## 🌌 Every competitor has the same flaw
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### ✗ The market
+*Elsewhere · Dreamy · Temenos · Oniri*
+
+- Require screen unlock to capture
+- Deliver deep psychoanalytic interpretation
+- Generate images, meaning, reflections
+- Multiple AI calls per dream
+- Store or share your dream content
+- TOS grants content rights *(Temenos)*
+
+</td>
+<td width="50%" valign="top">
+
+#### ✓ Dream Thread
+*voice-first · mood-aware · privacy-first*
+
+- Tap record from the lock screen. Eyes stay closed.
+- AI reflects mood - never tells you what it means
+- Exactly one AI call. Mood + tags out.
+- Near-black UI - zero blue light exposure
+- Raw audio never leaves your device
+- You own everything. No carve-outs.
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🌠 How it works
+
 ```
-/wp-content/uploads/voucher-generated/debug_log.txt
+   ┌─────────────────┐
+   │       ☾         │
+   │                 │
+   │   tap to record │
+   │                 │
+   │      ╭───╮      │
+   │     │  🎙  │     │
+   │      ╰───╯      │
+   │                 │
+   └─────────────────┘
 ```
 
-View it from the Settings page or access directly.
+**`01`** ⚡ &nbsp; **Tap record** - One tap on the lock screen. No unlock. Eyes stay closed.
+
+**`02`** 🎙 &nbsp; **Whisper your dream** - On-device Whisper transcribes your voice. Raw audio never leaves the phone.
+
+**`03`** 🧠 &nbsp; **Mood + tags appear** - One Claude call. Mood, symbols, setting - gentle reflections. Never deep analysis.
+
+**`04`** ☾ &nbsp; **Screen goes dark** - No confirmation. No animations. Silent haptic. Go back to sleep.
 
 ---
 
-## 🔐 Security Features (Preserved)
+## 🪶 What Dream Thread believes
 
-All security features from v9.0 are maintained:
+> *"Put it all down as beautifully as you can - in some beautifully bound book... for you it will be your church - your cathedral - the silent place of your spirit where you will find renewal."*
+>
+> **- Carl Jung**
 
-### Role-Based Access
-- Only **Super Administrators** can create manual vouchers
-- All users can view vouchers
-- Editors/Shop Managers can mark vouchers as used
+✧ &nbsp; **The AI is a librarian, not an analyst.** It files. It reflects mood. You think. Your meaning is yours to find.
 
-### Voucher Status Tracking
-- **Available** / **Used** status
-- Auto-captures staff name and timestamp
-- Only Super Admins can change from Used → Available
+✧ &nbsp; **Meaning lives in accumulation.** Not one session. The moment, six months in, when patterns surface on their own.
 
-### Locked Fields
-- Voucher code: Locked after generation
-- Customer name: Locked after first save
-- Prevents tampering and maintains audit trail
+✧ &nbsp; **Cathedral quality over dashboard utility.** The comparison is a Moleskine, not Calm. Beautiful, quiet, irreplaceable.
 
 ---
 
-## 🚀 Workflow
+## 🔒 Privacy by architecture
 
-### Automatic Generation (from orders)
-1. Customer purchases product with PDF template
-2. Order completes (payment confirmed)
-3. Plugin generates voucher(s) automatically
-4. PDF(s) attached to completion email
-5. Download links appear in order details
+> *Not a privacy policy. An architectural guarantee.*
 
-### Manual Generation
-1. **Vouchers → Add New** (Super Admin only)
-2. Select product template
-3. Enter customer name
-4. Click **Publish**
-5. PDF generates automatically
+| Layer | Guarantee |
+|:------|:----------|
+| 🔐 **Raw audio** | Never leaves the device. Whisper runs on-device. |
+| 🔐 **Dream transcript** | Stays local. Never synced. Never on our servers. |
+| 🔐 **AI training data** | Zero tolerance. No opt-in exists. Ever. |
+| 🔐 **Encryption** | AES-256 SQLCipher. Key in Secure Enclave. |
+| 🔐 **Content ownership** | Users own everything. Stated plainly. No carve-outs. |
+| ⚠️  **Temenos ToS** | *Grants content rights to the platform. (Not us.)* |
 
 ---
 
-## 🐛 Troubleshooting
+## ✦ Business model
 
-### "Python 3 not available"
-**Solution:** Install Python 3 on server
+<table>
+<tr>
+<th width="33%">Free</th>
+<th width="33%">⭐ Premium</th>
+<th width="33%">Lifetime</th>
+</tr>
+<tr>
+<td valign="top">
+
+**`$0`** *forever*
+
+- Unlimited voice capture
+- AI mood + tags - all dreams
+- Full journal + search
+- Full export - always ungated
+- Pattern surface (basic)
+
+*Genuinely useful. Not a nag screen.*
+
+</td>
+<td valign="top">
+
+**`$6`** */ month*
+**`$49`** */ year*
+
+- Framework lenses *(Jungian, narrative, creative)*
+- Dream Atlas - visual settings map
+- Quarterly contemplative biography
+- Advanced pattern visualizations
+- Priority support
+
+*Earns upgrade through value.*
+
+</td>
+<td valign="top">
+
+**`$99`** *one-time*
+
+- All premium features
+- No subscription ever
+- For committed practitioners
+- Comparable to DreamBoard model
+
+*Converts the most loyal users.*
+
+</td>
+</tr>
+</table>
+
+> 💸 **API cost per user:** ~$0.12/month at 30 dreams (Claude tagging + Whisper transcription).
+> Free tier is sustainable. Premium is trivially profitable.
+
+---
+
+## 🛠 Tech stack
+
+```
+   Frontend     →  Native iOS (SwiftUI + WidgetKit)
+                   Native Android (Jetpack Compose)
+
+   Lock screen  →  Live Activities (iOS 17+ App Intents)
+                   Quick Settings tile (Android)
+
+   Voice        →  Whisper - runs entirely on-device
+
+   Tagging      →  Claude (one API call, JSON out)
+
+   Storage      →  SQLCipher · AES-256 · Secure Enclave
+                   Zero cloud sync by default
+
+   Built with   →  Cursor · Claude · Whisper
+```
+
+---
+
+## 🌙 Getting started
+
 ```bash
-# Check version
-python3 --version
+# Clone the dream
+git clone https://github.com/clementinepujiutami/dream-thread.git
+cd dream-thread
 
-# Install if missing (Ubuntu/Debian)
-sudo apt-get install python3
+# Install
+npm install   # or pnpm / yarn / bun
+
+# Run
+npm run dev
 ```
 
-### "Module 'pypdf' not found"
-**Solution:** Install required packages
-```bash
-pip3 install pypdf reportlab
-```
-
-### "PDF generation failed"
-1. Check debug log for Python errors
-2. Verify PDF template URL is accessible
-3. Confirm upload directory is writable
-4. Test with a simple blank PDF first
-
-### "Text appears cut off"
-1. Reduce font size
-2. Use different position preset
-3. Adjust custom position coordinates
-4. Check page size in debug log
-
-### "Text in wrong position"
-1. Verify coordinate system (% vs mm)
-2. Check which corner/preset you're using
-3. Remember: coordinates anchor the text block
-4. Test with Center preset first
+> ⚠️ *This project was built in 2.5 hours at Cursor Hackathon 2026. Expect rough edges. Expect dreams.*
 
 ---
 
-## 📊 Migration from v9.0
+## ✧ Roadmap
 
-### What to do with existing vouchers:
-- **Old vouchers remain functional** - PDFs already generated
-- **No regeneration needed** for existing orders
-- **New orders use new system** automatically
-
-### Template migration:
-1. Your old PDF templates still work
-2. You can use the **same PDFs** without form fields
-3. Or create new clean templates without fields
-4. Configure positioning in product settings
-
-### Settings migration:
-- Old field mapping settings are ignored (no longer needed)
-- Configure new positioning settings per product
-- Test each product template individually
+- [x] Lock-screen one-tap capture
+- [x] On-device Whisper transcription
+- [x] Mood + tag reflection via Claude
+- [x] Local-only encrypted storage
+- [ ] Pattern surface - basic visualisations
+- [ ] Dream Atlas - visual settings map *(premium)*
+- [ ] Framework lenses - Jungian / narrative / creative *(premium)*
+- [ ] Quarterly contemplative biography *(premium)*
+- [ ] Android parity
+- [ ] Lucid dream session mode
 
 ---
 
-## 💡 Best Practices
+## 🤝 Contributing
 
-### Template Design
-1. Use clean, simple PDF backgrounds
-2. Leave clear space for text overlay
-3. Test with different customer name lengths
-4. Consider multi-language names
+This is a hackathon project, but if it speaks to you - open an issue, send a thought, share a dream.
 
-### Position Settings
-1. Start with presets before custom positions
-2. Test with longest expected customer names
-3. Use millimeters for precise control
-4. Keep 10mm minimum margin from edges
+The bar for contribution is simple: **does this make Dream Thread feel more like a Moleskine, and less like a dashboard?**
 
-### Font Size
-1. 12pt is readable for most uses
-2. Increase to 14-16pt for emphasis
-3. Decrease to 10pt for tight spaces
-4. Test readability after printing
-
----
-
-## 🆘 Support
-
-### Debug Information
-Always include when reporting issues:
-1. Debug log contents
-2. Product settings (screenshot)
-3. PDF template (if possible)
-4. Generated PDF (if created)
-5. Python version: `python3 --version`
-
-### Common Questions
-
-**Q: Can I use my old PDF templates?**
-A: Yes! The new version works with ANY PDF.
-
-**Q: Do I need to remove form fields from PDFs?**
-A: No, form fields are simply ignored. But you can use templates without fields.
-
-**Q: Can I position text anywhere?**
-A: Yes, use custom position with exact coordinates.
-
-**Q: Does it work with multi-page PDFs?**
-A: Yes, specify target page number in product settings.
-
-**Q: Can I customize the text content?**
-A: Currently shows customer name + voucher code. Code customization needed for other content.
+If yes, we want to hear from you.
 
 ---
 
 ## 📜 License
 
-Same license as original plugin.
-
-## 👤 Credits
-
-- Original Plugin: Adhitya
-- Refactor (v10.0): Adhitya & Claude
-- Libraries: pypdf, reportlab
+MIT - *you own your dreams, and you own this code.*
 
 ---
 
-## 🔄 Version History
+<div align="center">
 
-### v10.0 (Text Stamping Edition)
-- Complete refactor from form-filling to text stamping
-- Works with any PDF template
-- Flexible positioning system
-- Python-based generation
-- Preserved all security features
+### ☾ &nbsp; The AI listens. Reflects your mood. Never tells you what it means. &nbsp; ☾
 
-### v9.0 (Security Edition)
-- Form field filling with FPDM
-- Role-based access control
-- Voucher status tracking
-- Field locking
+*Your dreams, captured.&nbsp;&nbsp;Your meaning, yours.*
 
----
+`dreamthread.app` · *built at Cursor Hackathon 2026*
 
-## 📞 Quick Start Checklist
+```
+   ·    ✦         ⋆    ·
+        ·    ☾        ✧
+   ✦         ·     
+        ⋆        ✦   ·
+```
 
-- [ ] Python 3 installed on server
-- [ ] `pypdf` and `reportlab` packages installed
-- [ ] Old plugin deactivated/removed
-- [ ] New plugin uploaded and activated
-- [ ] System check passed (Settings page)
-- [ ] Product configured with PDF template URL
-- [ ] Position preset selected (start with Top-Right)
-- [ ] Font size set (start with 12pt)
-- [ ] Test generation successful
-- [ ] Test order completed
-- [ ] PDF received and verified
+</div>
+# In the folder where you want the repo
+git clone git@github.com:clementinepujiutami/dream-thread.git
+cd dream-thread
 
-**You're ready to go! 🎉**
+# Copy the README from your downloads
+cp ~/Downloads/README.md .
+
+# Push it up
+git add README.md
+git commit -m "✦ add dreamy README"
+git push origin main
